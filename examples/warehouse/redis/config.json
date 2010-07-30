@@ -1,0 +1,9 @@
+/* configure redis's defaults and file dependencies here */
+{
+  "defaults":{
+    "version": "2.0.0-rc2",
+    "binaries": [{ "name": "redis-server"}, { "name": "redis-cli"}, { "name": "redis-benchmark"}]
+  },
+  "files":[ { "local": "redis.conf", "remote": "/etc/redis.conf"} ],
+  "service": { "type": "supervise" }
+}

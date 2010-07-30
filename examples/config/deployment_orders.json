@@ -1,0 +1,13 @@
+{
+  "primary": {
+    "roles": [ "gem_server" ]
+  },
+  "secondary": {
+    "local": ["cap upload_private_gems"]
+  }/*,
+  "tertiary": {}
+  */
+}
+/* this means:
+ * set up the gem_server role, then run the command 'cap upload_private_gems' locally
+**/

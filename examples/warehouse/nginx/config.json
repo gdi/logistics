@@ -1,0 +1,17 @@
+{
+  "defaults":{
+    "version": "0.7.67",
+    "modules": [
+      { "url": "http://www.grid.net.ru/nginx/download", "module": "nginx_upload_module", "version": "2.0.12" }
+    ],
+    /* this is janky, but way easier than anything else I came up with */
+    "configure_options": "--prefix='/etc/nginx' --with-http_ssl_module --add-module=/usr/src/nginx_upload_module-2.0.12 --add-module=`passenger-config --root`/ext/nginx"
+  },
+  "files":[
+    { "local": "nginx.conf",              "remote": "/etc/nginx/conf/nginx.conf",         "when": "after" },
+    { "local": "my_site.conf.mustache",   "remote": "/etc/nginx/sites-available/my_site", "when": "after" },
+    { "local": "write_passenger_conf.rb", "remote": "/tmp/write_passenger_conf.rb",       "when": "after" },
+    { "local": "nginx_init",              "remote": "/etc/init.d/nginx" }
+  ],
+  "after_install": ["configure_passenger", "setup_upload_dirs", "configure_init"]
+}

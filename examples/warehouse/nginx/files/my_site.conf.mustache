@@ -1,0 +1,47 @@
+server {
+  listen       80;
+  root /u/apps/my_site/current/public;
+  server_name {{host}};
+    
+  if (-f $document_root/maintenance.html) {
+    rewrite  ^(.*)$  /maintenance.html last;
+    break;
+  }
+
+  location / {
+    passenger_enabled on;
+    # needed to forward user's IP address to rails
+    proxy_set_header  X-Real-IP  $remote_addr;
+
+    proxy_set_header Host $http_host;
+    proxy_redirect off;
+    proxy_max_temp_file_size 0;
+    
+    if ($request_uri ~* "\.(ico|css|js|gif|jpe?g|png)\?[0-9]+$") {
+      expires max;
+      break;
+    }
+
+    if (-f $request_filename) { 
+      break; 
+    }
+
+    if (-f $request_filename/index.html) {
+      rewrite (.*) $1/index.html break;
+    }
+
+    if (-f $request_filename.html) {
+      rewrite (.*) $1.html break;
+    }
+
+    if (!-f $request_filename) {
+      break;
+    }
+  }
+
+  error_page   500 502 503 504  /50x.html;
+  location = /50x.html {
+    passenger_enabled on;
+    root   html;
+  }
+}

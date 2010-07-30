@@ -1,0 +1,26 @@
+#!/bin/sh
+mkdir -p /usr/src
+gem install passenger
+
+# setup user
+useradd interwebs
+
+# install nginx
+yum -y install pcre-devel
+cd /usr/src && curl -O http://sysoev.ru/nginx/nginx-{{version}}.tar.gz && tar -zxf /usr/src/nginx-{{version}}.tar.gz
+{{#modules}}
+cd /usr/src && wget -O {{module}}-{{version}}.tar.gz {{url}}/{{module}}-{{version}}.tar.gz && tar -xzf {{module}}-{{version}}.tar.gz
+{{/modules}}
+
+cd /usr/src/nginx-{{version}}/ && ./configure {{configure_options}}
+cd /usr/src/nginx-{{version}}/ && make
+cd /usr/src/nginx-{{version}}/ && make install
+
+mkdir -p /etc/nginx/conf
+mkdir -p /etc/nginx/conf.d/
+mkdir -p /etc/nginx/sites-available/
+mkdir -p /etc/nginx/sites-enabled/
+mkdir -p /var/log/nginx/
+
+chown -R interwebs:interwebs /etc/nginx
+chown -R interwebs:interwebs /var/log/nginx

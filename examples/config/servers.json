@@ -1,0 +1,20 @@
+{
+  "production": {
+  },
+  "test": {
+    "a-test-server": {
+      "roles": ["test_bed"]
+    },
+    "a-test-web": {
+      "roles": ["web"]
+    }
+  },
+  "staging": {
+    "my_web_server.fqdn.com": {
+      "roles": ["web"]
+    },
+    "my_gems.fqdn.com": {
+      "roles": ["gem_server"]
+    }
+  }
+}

@@ -1,0 +1,3 @@
+mkdir -p /usr/src
+if [ ! -e /usr/src/git-{{git_version}} ]; then cd /usr/src && curl -O http://kernel.org/pub/software/scm/git/git-{{git_version}}.tar.gz && tar -xzf git-{{git_version}}.tar.gz; fi
+cd /usr/src/git-{{git_version}} && ./configure --prefix=/usr/local && make && make install

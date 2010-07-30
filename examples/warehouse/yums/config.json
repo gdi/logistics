@@ -1,0 +1,7 @@
+/* configure yums's defaults and file dependencies here */
+{
+  "defaults":{
+    "yums": "curl-devel libxslt-devel"
+  },
+  "files":[]
+}

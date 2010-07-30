@@ -1,0 +1,8 @@
+{
+  "defaults":{},
+  "files":[
+    { "local": "supervise-scripts-3.5-2.noarch.rpm", "remote": "/tmp/supervise-scripts-3.5-2.noarch.rpm" },
+    { "local": "daemontools-0.76-1.i686.rpm", "remote": "daemontools-0.76-1.i686.rpm" }
+  ],
+  "after_install": ["start_svscan"]
+}

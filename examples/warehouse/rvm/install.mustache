@@ -1,0 +1,6 @@
+mkdir -p /usr/src
+if [ ! -e /usr/src/rvm-install-head ]; then cd /usr/src && curl -O http://rvm.beginrescueend.com/releases/rvm-install-head; fi
+chmod +x /usr/src/rvm-install-head && /usr/src/rvm-install-head
+/usr/local/bin/rvm install {{rubies}}
+rvm --default {{default_ruby}}
+cat /tmp/rvm_bashrc >> /etc/bashrc

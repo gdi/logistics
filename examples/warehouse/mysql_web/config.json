@@ -1,0 +1,16 @@
+/* configure mysql's defaults and file dependencies here */
+{
+  "defaults":{
+    "path": "/var/lib/mysql",
+    "user": "sql_user",
+    "password": "password"
+  },
+  "files":[],
+  "service": {
+    "type": "supervise",
+    "defaults": {
+      "port": 3306
+    }
+  },
+  "after_install": ["secure"]
+}

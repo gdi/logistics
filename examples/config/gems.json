@@ -1,0 +1,4 @@
+{
+  "gem_server": [ "sinatra", "geminabox" ],
+  "web": [ "nginx", "rails", "mysql" ]
+}

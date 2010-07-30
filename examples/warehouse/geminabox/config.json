@@ -1,0 +1,8 @@
+/* configure geminabox's defaults and file dependencies here */
+{
+  "defaults":{},
+  "files":[
+    { "local": "config.ru", "remote": "/gem_server_path/config.ru", "when": "after" }
+  ],
+  "after_install": ["enable_and_start_gem_server"]
+}

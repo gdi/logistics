@@ -1,0 +1,6 @@
+/* configure memcache's defaults and file dependencies here */
+{
+  "defaults":{},
+  "files":[],
+  "service": { "type": "supervise" }
+}

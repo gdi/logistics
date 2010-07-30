@@ -1,0 +1,12 @@
+{
+  "production": { },
+  "staging": {
+    "*": [ "epel", "git", "rvm", "supervise", "redis", "yums" ],
+    "web": [ "nginx", "mysql_web", "memcached" ],
+    "gem_server": [ "geminabox", "nginx" ]
+  },
+  "test": {
+    "test_bed": [ "package_a", "package_b" ],
+    "web": [ "web_package" ]
+  }
+}

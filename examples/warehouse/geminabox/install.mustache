@@ -1,0 +1,9 @@
+#!/bin/sh
+
+gem install geminabox
+
+mkdir -p /gem_server_path/gems
+chmod -R ugo+rw /gem_server_path/gems
+mkdir -p /gem_server_path/public
+# set up initial (empty) gem index so that we can actually add the source
+ruby -e 'su interwebs; require "rubygems/indexer"; Gem::Indexer.new("/gem_server_path/gems").generate_index'
